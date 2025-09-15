@@ -32,6 +32,14 @@ class Field {
             }
         }
     }
+    static generateField(height,width,percentage){
+        for(let col = 0; col < height; col++){
+            let tempArray = [];
+            for(let row = 0; row < width; row++){
+
+            }
+        }
+    }
 }
 
 const myField = new Field([
@@ -49,12 +57,14 @@ while(myField.getPosition() != finish){
             if(myField.layout[myField.x][myField.y-1] && myField.layout[myField.x][myField.y-1] === myField.fieldCharacter){
                 myField.updatePath(myField.x,myField.y-1)
             }else if(myField.layout[myField.x][myField.y-1] && myField.layout[myField.x][myField.y-1] === myField.hole){
+                myField.updatePath(myField.x,myField.y-1)
                 console.log('Sorry, you fell down a hole');
                 process.exit();
             }
             else if(!myField.layout[myField.x][myField.y-1]){
                 console.log('Cant go that way..\n')
             }else if(myField.layout[myField.x][myField.y-1] === myField.hat){
+                myField.updatePath(myField.x,myField.y-1)
                 console.log('You found the hat! Congratulations!');
                 process.exit();
             }else if(myField.layout[myField.x][myField.y-1] === myField.pathCharacter){
@@ -67,10 +77,13 @@ while(myField.getPosition() != finish){
             }else if(!myField.layout[myField.x][myField.y+1]){
                 console.log('Cant go that way..\n')
             }else if(myField.layout[myField.x][myField.y+1] === myField.hole){
+                myField.updatePath(myField.x,myField.y+1);
                 console.log('Sorry, you fell down a hole');
                 process.exit();
             }else if(myField.layout[myField.x][myField.y+1] === myField.hat){
+                myField.updatePath(myField.x,myField.y+1);
                 console.log('You found the hat! Congratulations!');
+                console.log(myField.getPosition());
                 process.exit();
             }
             break;
@@ -80,9 +93,11 @@ while(myField.getPosition() != finish){
             }else if(!myField.layout[myField.x-1][myField.y]){
                 console.log('Cant go that way..\n')
             }else if(myField.layout[myField.x-1][myField.y] === myField.hole){
+                myField.updatePath(myField.x-1,myField.y);
                 console.log('Sorry, you fell down a hole');
                 process.exit();
             }else if(myField.layout[myField.x-1][myField.y] === myField.hat){
+                myField.updatePath(myField.x-1,myField.y);
                 console.log('You found the hat! Congratulations!');
                 process.exit();
             }else if(myField.layout[myField.x-1][myField.y] === myField.pathCharacter){
@@ -95,9 +110,11 @@ while(myField.getPosition() != finish){
             }else if(!myField.layout[myField.x+1][myField.y]){
                 console.log('Cant go that way..\n')
             }else if(myField.layout[myField.x+1][myField.y] === myField.hole){
+                myField.updatePath(myField.x+1,myField.y);
                 console.log('Sorry, you fell down a hole');
                 process.exit();
             }else if(myField.layout[myField.x+1][myField.y] === myField.hat){
+                myField.updatePath(myField.x+1,myField.y);
                 console.log('You found the hat! Congratulations!');
                 process.exit();
             }else if(myField.layout[myField.x+1][myField.y] === myField.pathCharacter){
